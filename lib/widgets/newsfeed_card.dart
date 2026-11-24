@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:diomampo_labact1a/widgets/custom_text.dart';
+import 'package:diomampo_labact2a/constants.dart';
+import 'package:diomampo_labact2a/widgets/custom_text.dart';
 
 class NewsfeedCard extends StatefulWidget {
   const NewsfeedCard({
@@ -12,6 +13,7 @@ class NewsfeedCard extends StatefulWidget {
     this.hasImage = false,
     this.imagePath = '',
     this.profileImagePath = 'assets/images/profile.png',
+    this.showAuthorProfileImage = true,
   });
 
   final String userName;
@@ -21,6 +23,7 @@ class NewsfeedCard extends StatefulWidget {
   final bool hasImage;
   final String imagePath;
   final String profileImagePath;
+  final bool showAuthorProfileImage;
 
   @override
   State<NewsfeedCard> createState() => _NewsfeedCardState();
@@ -52,7 +55,13 @@ class _NewsfeedCardState extends State<NewsfeedCard> {
                 children: [
                   CircleAvatar(
                     radius: ScreenUtil().setWidth(20),
-                    backgroundImage: AssetImage(widget.profileImagePath),
+                    backgroundColor: fbSoftPrimary,
+                    backgroundImage: widget.showAuthorProfileImage
+                        ? AssetImage(widget.profileImagePath)
+                        : null,
+                    child: widget.showAuthorProfileImage
+                        ? null
+                        : const Icon(Icons.person, color: fbLightPrimary),
                   ),
                   SizedBox(width: ScreenUtil().setWidth(8)),
                   Expanded(
@@ -124,7 +133,7 @@ class _NewsfeedCardState extends State<NewsfeedCard> {
                         width: ScreenUtil().setWidth(14),
                         height: ScreenUtil().setWidth(14),
                         decoration: const BoxDecoration(
-                          color: Color(0xFF1877F2),
+                          color: fbPrimary,
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -183,7 +192,7 @@ class _NewsfeedCardState extends State<NewsfeedCard> {
                             _isLiked ? Icons.thumb_up : Icons.thumb_up_outlined,
                             size: 17,
                             color: _isLiked
-                                ? const Color(0xFF1877F2)
+                                ? fbPrimary
                                 : Colors.grey,
                           ),
                           SizedBox(width: ScreenUtil().setWidth(6)),
@@ -191,7 +200,7 @@ class _NewsfeedCardState extends State<NewsfeedCard> {
                             text: 'Like',
                             fontSize: ScreenUtil().setSp(13),
                             color: _isLiked
-                                ? const Color(0xFF1877F2)
+                                ? fbPrimary
                                 : Colors.grey,
                           ),
                         ],

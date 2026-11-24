@@ -1,7 +1,8 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
-import 'package:diomampo_labact1a/screens/home_screen.dart';
-import 'package:diomampo_labact1a/screens/newsfeed_screen.dart';
+import 'package:diomampo_labact2a/constants.dart';
+import 'package:diomampo_labact2a/screens/home_screen.dart';
+import 'package:diomampo_labact2a/screens/newsfeed_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +20,19 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "Facebook",
+          title: appName,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: fbPrimary,
+              primary: fbPrimary,
+              secondary: fbSecondary,
+              surface: fbTextColorWhite,
+            ),
+            appBarTheme: const AppBarTheme(
+              backgroundColor: fbDarkPrimary,
+              foregroundColor: fbTextColorWhite,
+            ),
+          ),
           initialRoute: "/home",
           routes: {
             "/newsfeed": (context) => const NewsfeedScreen(),

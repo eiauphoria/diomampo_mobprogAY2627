@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:diomampo_labact1a/constants.dart';
-import 'package:diomampo_labact1a/widgets/custom_text.dart';
+import 'package:diomampo_labact2a/constants.dart';
+import 'package:diomampo_labact2a/widgets/custom_text.dart';
 
 class NotificationWidget extends StatelessWidget {
   const NotificationWidget({

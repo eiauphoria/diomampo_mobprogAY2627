@@ -1,9 +1,9 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
-import 'package:diomampo_labact1a/constants.dart';
-import 'package:diomampo_labact1a/screens/newsfeed_screen.dart';
-import 'package:diomampo_labact1a/screens/notification_screen.dart';
-import 'package:diomampo_labact1a/widgets/custom_text.dart';
+import 'package:diomampo_labact2a/constants.dart';
+import 'package:diomampo_labact2a/screens/newsfeed_screen.dart';
+import 'package:diomampo_labact2a/screens/notification_screen.dart';
+import 'package:diomampo_labact2a/widgets/custom_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
 
   static const List<String> _titles = <String>[
-    'Facebook',
+    appName,
     'Notifications',
     'Profile',
   ];
@@ -26,12 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: fbTextColorWhite,
         elevation: 2,
         title: CustomText(
           text: _titles[_selectedIndex],
           fontSize: ScreenUtil().setSp(25),
-          color: _selectedIndex == 0 ? fbPrimary : Colors.black,
+          color: fbTextColorWhite,
           fontFamily: 'Klavika',
           fontWeight: FontWeight(700),
         ),
@@ -51,8 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        backgroundColor: fbSoftPrimary,
         onTap: _onTappedBar,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -63,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         selectedItemColor: fbPrimary,
+        unselectedItemColor: fbDarkPrimary,
         currentIndex: _selectedIndex,
       ),
     );
@@ -85,7 +87,10 @@ class _ProfileScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircleAvatar(radius: 40, child: Icon(Icons.person, size: 40)),
+          CircleAvatar(
+            radius: 40,
+            backgroundImage: AssetImage('assets/images/kween.png'),
+          ),
           SizedBox(height: 12),
           CustomText(
             text: 'Dea Ayel Diomampo',

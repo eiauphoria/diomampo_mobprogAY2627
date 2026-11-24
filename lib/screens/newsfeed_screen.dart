@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:diomampo_labact1a/widgets/newsfeed_card.dart';
+import 'package:diomampo_labact2a/widgets/newsfeed_card.dart';
 
 class NewsfeedScreen extends StatelessWidget {
   const NewsfeedScreen({super.key});
@@ -15,7 +15,7 @@ class NewsfeedScreen extends StatelessWidget {
           numOfLikes: 100,
           hasImage: true,
           imagePath: 'assets/images/owl.jpg',
-          profileImagePath: 'assets/images/profile.png',
+          showAuthorProfileImage: false,
         ),
         NewsfeedCard(
           userName: 'Roben Juanatas',
@@ -24,6 +24,7 @@ class NewsfeedScreen extends StatelessWidget {
           numOfLikes: 500,
           hasImage: true,
           imagePath: 'assets/images/iron-man.png',
+          showAuthorProfileImage: false,
         ),
         NewsfeedCard(
           userName: 'Dea Ayel Diomampo',
